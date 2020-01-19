@@ -28,12 +28,14 @@ module.exports = {
     devServer: {
         port: 9001,
         hot: true,
+        index: 'first-page.html',
+        // 允许通过IP访问，配合useLocalIp，浏览器可直接打开本地IP。如不想局域网内其他电脑通过IP访问，注释下面两行配置。
+        host: '0.0.0.0',
+        useLocalIp: true,
         // 用于设置服务器的静态目录
         // 注意：webpack编译后的文件是放在内存中的，但是会绑定到devServer中，如果想改变编译后的根路径，可以设置publicPath
         // contentBase: './dist',
         // 例如编译后首页是home.html，设置了publicPath: '/test/'，那么现在访问就是http://localhost:9001/test/home.html
         // publicPath: '/test/',
-        // 可以通过IP地址访问
-        // host: '0.0.0.0',
     }
 };
