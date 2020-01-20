@@ -13,6 +13,17 @@ module.exports = {
         // path: path.resolve(__dirname, 'dist'), // 可省，默认输出到dist
         filename: '[name].bundle.[hash:5].js', // [name],[hash],[hash:5],[id],[chunkhash],[contenthash]
     },
+    module: {
+        rules: [
+            {
+                test: /\.jsx?$/, // 匹配.js或.jsx
+                // loader的执行顺序是倒序（从右到左，或从下到上）
+                // 支持写法，例use:['style-loader'] 是 use:[{loader:'style-loader'}]的捷径
+                use: ["babel-loader"],
+                exclude: /node_modules/,
+            }
+        ]
+    },
     plugins: [
         new HtmlWebpackPlugin({
             chunks: ['login'],
