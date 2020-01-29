@@ -17,11 +17,42 @@ module.exports = {
         rules: [
             {
                 test: /\.jsx?$/, // 匹配.js或.jsx
-                // loader的执行顺序是倒序（从右到左，或从下到上）
-                // 支持写法，例use:['style-loader'] 是 use:[{loader:'style-loader'}]的捷径
-                use: ["babel-loader"],
+                // 当只有一个loader时，可直接使用loader和options；多个loader要使用use。
+                // Rule.loader is a shortcut to Rule.use: [ { loader } ]
+                // Rule.options is a shortcut to Rule.use: [ { options } ]
+                loader: 'babel-loader',
                 exclude: /node_modules/,
-            }
+            },
+            {
+                test: /\.css$/,
+                // 多个loader使用use，loader的执行顺序是倒序（从右到左，或从下到上）
+                use: [
+                    // 支持字符串写法，例 use:['style-loader'] 是 use:[{loader:'style-loader'}]的捷径
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: {
+                                // 例 '[path][name]__[local]--[hash:base64:5]'
+                                // 推荐:
+                                // '[path][name]__[local]' for development
+                                // '[hash:base64]' for production
+                                localIdentName: '[path][name]__[local]--[hash:base64:5]',
+                            },
+                            // 支持使用驼峰规则来引用导出样式(包含破折号和下划线)，而不用写字符串。
+                            // 例 style['blue-gbc']可以用style.blueGbc来代替
+                            localsConvention: 'camelCase',
+                        }
+                    }
+                ],
+            },
+            {
+                test: /\.(png|jpe?g|gif|svg|eot|ttf|woff|woff2)$/,
+                loader: 'url-loader',
+                options: {
+                    limit: 8192,
+                },
+            },
         ]
     },
     plugins: [

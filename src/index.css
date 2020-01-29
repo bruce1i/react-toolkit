@@ -1,0 +1,36 @@
+.red {
+    color: red;
+}
+
+.blue-gbc {
+    background-color: blue;
+}
+
+.blue_two {
+    color: blue;
+}
+
+.three_wow-Ha {
+    color: orange;
+}
+
+.double--wa__ka {
+    color: yellow;
+}
+
+.treble---w___k {
+    color: green;
+}
+
+.hello .bob-img {
+    width: 54px;
+    height: 63px;
+    background-image: url("./images/bob.png");
+    background-size: cover;
+}
+
+.kevin-img-s{
+    width: 17px;
+    height: 31px;
+    background-image: url("./images/kevin-s.png");
+}

@@ -18,3 +18,7 @@
 - npm install @babel/core @babel/preset-env --save-dev // babel核心和预置语法转换
 - npm install @babel/preset-react --save-dev // 支持转换jsx语法
 - npm install babel-loader --save-dev // 使用babel转换webpack的模块
+#### CSS相关
+- npm install css-loader style-loader --save-dev
+- npm install url-loader --save-dev // 转换css中图片等为base64 URIs
+- npm install file-loader --save-dev // url-loader执行fallback时会调用
