@@ -1,3 +1,4 @@
+const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = (env) => {
@@ -5,11 +6,13 @@ module.exports = (env) => {
 
     return [
         new MiniCssExtractPlugin({
+            /**
+             * 配置参考了 https://github.com/webpack-contrib/mini-css-extract-plugin#advanced-configuration-example
+             */
             // Options similar to the same options in webpackOptions.output
-            // all options are optional
-            filename: '[name].css',
-            chunkFilename: '[id].css',
-            ignoreOrder: false, // Enable to remove warnings about conflicting order
+            // both options are optional
+            filename: dev ? '[name].css' : '[name].[hash].css',
+            chunkFilename: dev ? '[id].css' : '[id].[hash].css',
         })
     ]
 }
