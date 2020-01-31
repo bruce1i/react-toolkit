@@ -19,6 +19,10 @@
 - npm install @babel/preset-react --save-dev // 支持转换jsx语法
 - npm install babel-loader --save-dev // 使用babel转换webpack的模块
 #### CSS相关
-- npm install css-loader style-loader --save-dev
+- npm install css-loader --save-dev
+- npm install style-loader --save-dev // 注入样式到DOM（写入<style></style>）
 - npm install url-loader --save-dev // 转换css中图片等为base64 URIs
 - npm install file-loader --save-dev // url-loader执行fallback时会调用
+- npm install less less-loader --save-dev
+- npm install postcss-loader autoprefixer --save-dev // 使用postcss添加浏览器前缀，autoprefixer是postcss的浏览器前缀插件
+- npm install mini-css-extract-plugin --save-dev // 提取css到单独文件
