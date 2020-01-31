@@ -26,3 +26,6 @@
 - npm install less less-loader --save-dev
 - npm install postcss-loader autoprefixer --save-dev // 使用postcss添加浏览器前缀，autoprefixer是postcss的浏览器前缀插件
 - npm install mini-css-extract-plugin --save-dev // 提取css到单独文件
+- npm install optimize-css-assets-webpack-plugin --save-dev // 压缩css文件
+#### JS相关
+- npm install terser-webpack-plugin --save-dev // 压缩js文件

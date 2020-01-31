@@ -1,7 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const getWebpackLoaders = require('./_webpack/webpack.loaders');
-const getWebpackPlugins = require('./_webpack/webpack.plugins');
+const getWebpackLoaders = require('./webpack.loaders');
+const getWebpackPlugins = require('./webpack.plugins');
+const getWebpackOptimizations = require('./webpack.optimizations')
 
 console.log('> process.env.HOST', process.env.HOST)
 
@@ -16,12 +17,13 @@ module.exports = (env = {}, argv) => {
     const devtool = dev ? 'eval-source-map' : 'source-map'
     const loaders = getWebpackLoaders(env)
     const plugins = getWebpackPlugins(env)
+    const optimizations = getWebpackOptimizations(env)
     console.log('> dev', dev)
     console.log('> mode', mode)
     console.log('> devtool', devtool)
 
     const config = {
-        // for common
+        /** for common */
         mode: mode, // https://webpack.js.org/configuration/mode/
         entry: {
             login: './src/index.js',
@@ -42,10 +44,11 @@ module.exports = (env = {}, argv) => {
             }),
             ...plugins
         ],
-        // for development
+        optimization: optimizations,
         // 用于控制source maps的生成
         // 推荐这三个选项：source-map(独立map文件，用于产品环境),inline-source-map,eval-source-map
         devtool: devtool,
+        /** only for development */
         devServer: {
             open: true,
             port: 9001,
