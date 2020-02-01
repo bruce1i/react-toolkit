@@ -1,8 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const getWebpackLoaders = require('./webpack.loaders');
+const getWebpackModule = require('./webpack.module');
 const getWebpackPlugins = require('./webpack.plugins');
-const getWebpackOptimizations = require('./webpack.optimizations')
+const getWebpackOptimization = require('./webpack.optimization')
 
 console.log('> process.env.HOST', process.env.HOST)
 
@@ -15,14 +15,14 @@ module.exports = (env = {}, argv) => {
     const {dev} = env
     const mode = dev ? 'development' : 'production'
     const devtool = dev ? 'eval-source-map' : 'source-map'
-    const loaders = getWebpackLoaders(env)
-    const plugins = getWebpackPlugins(env)
-    const optimizations = getWebpackOptimizations(env)
+    const {module} = getWebpackModule(env)
+    const {plugins} = getWebpackPlugins(env)
+    const {optimization} = getWebpackOptimization(env)
     console.log('> dev', dev)
     console.log('> mode', mode)
     console.log('> devtool', devtool)
 
-    const config = {
+    return {
         /** for common */
         mode: mode, // https://webpack.js.org/configuration/mode/
         entry: {
@@ -30,12 +30,9 @@ module.exports = (env = {}, argv) => {
             second: './src/second.js',
         },
         output: {
-            // path: path.resolve(__dirname, 'dist'), // 可省，默认输出到dist
+            path: path.resolve(__dirname, 'dist'), // 可省，默认输出到dist
             filename: dev ? '[name].bundle.js' : '[name].[hash].bundle.js', // [name],[hash],[hash:5],[id],[chunkhash],[contenthash]
             chunkFilename: dev ? '[id].js' : '[id].[hash].js',
-        },
-        module: {
-            rules: loaders
         },
         plugins: [
             new HtmlWebpackPlugin({
@@ -45,10 +42,11 @@ module.exports = (env = {}, argv) => {
             }),
             ...plugins
         ],
-        optimization: optimizations,
+        module: module,
         // 用于控制source maps的生成
         // 推荐这三个选项：source-map(独立map文件，用于产品环境),inline-source-map,eval-source-map
         devtool: devtool,
+        optimization: optimization,
         /** only for development */
         devServer: {
             open: true,
@@ -64,7 +62,5 @@ module.exports = (env = {}, argv) => {
             // 例如编译后首页是home.html，设置了publicPath: '/test/'，那么现在访问就是http://localhost:9001/test/home.html
             // publicPath: '/test/',
         }
-    };
-
-    return config
+    }
 }
