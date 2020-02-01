@@ -31,7 +31,8 @@ module.exports = (env = {}, argv) => {
         },
         output: {
             // path: path.resolve(__dirname, 'dist'), // 可省，默认输出到dist
-            filename: '[name].bundle.[hash:5].js', // [name],[hash],[hash:5],[id],[chunkhash],[contenthash]
+            filename: dev ? '[name].bundle.js' : '[name].[hash].bundle.js', // [name],[hash],[hash:5],[id],[chunkhash],[contenthash]
+            chunkFilename: dev ? '[id].js' : '[id].[hash].js',
         },
         module: {
             rules: loaders

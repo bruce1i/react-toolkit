@@ -11,7 +11,7 @@ module.exports = (env) => {
              */
             // Options similar to the same options in webpackOptions.output
             // both options are optional
-            filename: dev ? '[name].css' : '[name].[hash].css',
+            filename: dev ? '[name].bundle.css' : '[name].[hash].bundle.css',
             chunkFilename: dev ? '[id].css' : '[id].[hash].css',
         })
     ]

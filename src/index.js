@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {lazy, Suspense} from 'react'
 import ReactDom from 'react-dom'
 // css
 import style from './index.css'
@@ -7,12 +7,15 @@ import css from './style/index.less'
 console.log('> style', style)
 console.log('> css', css)
 // components
-import HelloWorld from "./components/hello-world";
+// import HelloWorld from "./components/hello-world";
+const HelloWorld = lazy(() => import('./components/hello-world'))
 
 function App(props) {
     return (
         <div className={style.hello}>
-            <HelloWorld/>
+            <Suspense fallback={<div>Loading...</div>}>
+                <HelloWorld/>
+            </Suspense>
             <div className={style.red}>red</div>
             <div className={style.blueGbc}>blue background color</div>
             <div className={style.blue_two}>blue two</div>

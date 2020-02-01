@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --env.prod",
+    "start": "webpack-dev-server --env.dev",
     "build": "npm run clean && webpack --config webpack.config.js --env.prod --progress",
+    "build:dev": "npm run clean && webpack --env.dev --progress",
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rimraf ./dist"
   },
