@@ -1,8 +1,11 @@
-const path = require('path');
+// const path = require('path');
+const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const getConstants = require('./webpack.constants');
 
 module.exports = (env) => {
     const {dev} = env
+    const constants = getConstants(env)
 
     return {
         plugins: [
@@ -14,7 +17,8 @@ module.exports = (env) => {
                 // both options are optional
                 filename: dev ? '[name].bundle.css' : '[name].[hash].bundle.css',
                 chunkFilename: dev ? '[id].css' : '[id].[hash].css',
-            })
+            }),
+            new webpack.DefinePlugin(constants)
         ]
     }
 }

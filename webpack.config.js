@@ -4,7 +4,6 @@ const getWebpackModule = require('./webpack.module');
 const getWebpackPlugins = require('./webpack.plugins');
 const getWebpackOptimization = require('./webpack.optimization')
 
-console.log('> process.env.HOST', process.env.HOST)
 
 module.exports = (env = {}, argv) => {
     // 环境变量，需要限制入参只能是对象，不能是字符串和数组，要不然下面的解析代码会出错
@@ -30,14 +29,14 @@ module.exports = (env = {}, argv) => {
             second: './src/second.js',
         },
         output: {
-            path: path.resolve(__dirname, 'dist'), // 可省，默认输出到dist
+            path: path.resolve(__dirname, 'dist'), // [可省略] 默认输出到dist
             filename: dev ? '[name].bundle.js' : '[name].[hash].bundle.js', // [name],[hash],[hash:5],[id],[chunkhash],[contenthash]
             chunkFilename: dev ? '[id].js' : '[id].[hash].js',
         },
         plugins: [
             new HtmlWebpackPlugin({
                 chunks: ['login'],
-                template: "./src/index.html",
+                template: "./src/index.ejs",
                 filename: "first-page.html",
             }),
             ...plugins
