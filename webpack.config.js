@@ -54,6 +54,9 @@ module.exports = (env = {}, argv) => {
              */
             extensions: ['.js', '.jsx', '.json', '.wasm', '.mjs']
         },
+        externals: {
+            /** Code here... */
+        },
         module: module,
         // 用于控制source maps的生成
         // 推荐这三个选项：source-map(独立map文件，用于产品环境),inline-source-map,eval-source-map
