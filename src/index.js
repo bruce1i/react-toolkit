@@ -1,5 +1,6 @@
 import React, {lazy, Suspense} from 'react'
 import ReactDom from 'react-dom'
+import {includes} from 'lodash'
 // css
 import style from './index.css'
 import css from './style/index.less'
@@ -11,6 +12,12 @@ console.log('> css', css)
 // const HelloWorld = lazy(() => import('./components/hello-world'))
 const HelloWorld = lazy(() => import('@/components/hello-world'))
 const HelloWorld2 = lazy(() => import('@/components/hello-world2'))
+
+const arr1 = ['hello', 3, 'test']
+console.log('> includes world', includes(arr1, 'world'))
+console.log('> includes 3', includes(arr1, 3))
+console.log('> includes string 3', includes(arr1, '3'))
+console.log('> includes hello', includes(arr1, 'hello'))
 
 function App(props) {
     return (

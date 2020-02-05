@@ -43,7 +43,8 @@ module.exports = (env = {}, argv) => {
         ],
         resolve: {
             alias: {
-                '@': path.resolve(__dirname, 'src')
+                lodash: 'lodash-es', // 为lodash-es设置别名，现在import 'lodash'引入的是lodash-es。
+                '@': path.resolve(__dirname, 'src'),
             },
             /**
              * 可以不用配置该项，默认值为['.wasm', '.mjs', '.js', '.json']。
