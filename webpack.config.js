@@ -41,6 +41,19 @@ module.exports = (env = {}, argv) => {
             }),
             ...plugins
         ],
+        resolve: {
+            alias: {
+                '@': path.resolve(__dirname, 'src')
+            },
+            /**
+             * 可以不用配置该项，默认值为['.wasm', '.mjs', '.js', '.json']。
+             * 由于默认值没有支持.jsx扩展，所以这里重写了。如果你不用.jsx扩展，那么没必要设置他。
+             * 注意：
+             * If multiple files share the same name but have different extensions,
+             * webpack will resolve the one with the extension listed first in the array and skip the rest.
+             */
+            extensions: ['.js', '.jsx', '.json', '.wasm', '.mjs']
+        },
         module: module,
         // 用于控制source maps的生成
         // 推荐这三个选项：source-map(独立map文件，用于产品环境),inline-source-map,eval-source-map

@@ -8,13 +8,18 @@ console.log('> style', style)
 console.log('> css', css)
 // components
 // import HelloWorld from "./components/hello-world";
-const HelloWorld = lazy(() => import('./components/hello-world'))
+// const HelloWorld = lazy(() => import('./components/hello-world'))
+const HelloWorld = lazy(() => import('@/components/hello-world'))
+const HelloWorld2 = lazy(() => import('@/components/hello-world2'))
 
 function App(props) {
     return (
         <div className={style.hello}>
             <Suspense fallback={<div>Loading...</div>}>
                 <HelloWorld/>
+            </Suspense>
+            <Suspense fallback={<div>Loading...</div>}>
+                <HelloWorld2/>
             </Suspense>
             <div className={style.red}>red</div>
             <div className={style.blueGbc}>blue background color</div>
