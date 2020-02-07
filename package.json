@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --env.devMode --env.constEnv=dev",
-    "build": "npm run clean && webpack --config webpack.config.js --env.prod --progress",
-    "build:devmode": "npm run clean && webpack --env.devMode --progress",
+    "review": "npm run clean && webpack --env.devMode --env.constEnv=dev",
+    "build-dev": "npm run clean && webpack --env.constEnv=dev --progress",
+    "build-test": "npm run clean && webpack --env.constEnv=test --progress",
+    "build-prod": "npm run clean && webpack --env.constEnv=prod --progress",
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rimraf ./dist"
   },
