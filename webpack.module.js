@@ -1,7 +1,7 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = (env) => {
-    const {dev} = env
+    const {devMode} = env
 
     const miniCssExtractPluginLoader = {
         loader: MiniCssExtractPlugin.loader,
@@ -11,7 +11,7 @@ module.exports = (env) => {
             // 修改css中资源文件(例url)的显示路径（但不会修改资源文件真实输出路径，真实路径由file-loader控制）
             // publicPath: '/style/',
             // only enable hot in development
-            hmr: !!dev,
+            hmr: !!devMode,
             // if hmr does not work, this is a forceful method.
             // https://github.com/webpack-contrib/mini-css-extract-plugin#hot-module-reloading-hmr
             reloadAll: true,
@@ -26,7 +26,7 @@ module.exports = (env) => {
                 // use '[hash:base64]' for production
                 // 推荐来自官方文档 https://github.com/webpack-contrib/css-loader#modules
                 // https://github.com/webpack/loader-utils#interpolatename
-                localIdentName: dev ? '[path][name]__[local]' : '[hash:base64]',
+                localIdentName: devMode ? '[path][name]__[local]' : '[hash:base64]',
             },
             // 支持使用驼峰规则来引用导出样式(包含破折号和下划线)，而不用写字符串。
             // 例 style['blue-gbc']可以用style.blueGbc来代替

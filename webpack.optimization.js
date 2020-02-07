@@ -2,7 +2,7 @@ const TerserJSPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = (env) => {
-    const {dev} = env
+    const {devMode} = env
 
     return {
         optimization: {

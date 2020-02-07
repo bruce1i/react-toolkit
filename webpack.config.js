@@ -11,13 +11,13 @@ module.exports = (env = {}, argv) => {
     // https://webpack.js.org/api/cli/#environment-options
     console.log('> env', env)
     // console.log('> argv', argv)
-    const {dev} = env
-    const mode = dev ? 'development' : 'production'
-    const devtool = dev ? 'eval-source-map' : 'source-map'
+    const {devMode} = env
+    const mode = devMode ? 'development' : 'production'
+    const devtool = devMode ? 'eval-source-map' : 'source-map'
     const {module} = getWebpackModule(env)
     const {plugins} = getWebpackPlugins(env)
     const {optimization} = getWebpackOptimization(env)
-    console.log('> dev', dev)
+    console.log('> devMode', devMode)
     console.log('> mode', mode)
     console.log('> devtool', devtool)
 
@@ -30,8 +30,8 @@ module.exports = (env = {}, argv) => {
         },
         output: {
             path: path.resolve(__dirname, 'dist'), // [可省略] 默认输出到dist
-            filename: dev ? '[name].bundle.js' : '[name].[hash].bundle.js', // [name],[hash],[hash:5],[id],[chunkhash],[contenthash]
-            chunkFilename: dev ? '[id].js' : '[id].[hash].js',
+            filename: devMode ? '[name].bundle.js' : '[name].[hash].bundle.js', // [name],[hash],[hash:5],[id],[chunkhash],[contenthash]
+            chunkFilename: devMode ? '[id].js' : '[id].[hash].js',
         },
         plugins: [
             new HtmlWebpackPlugin({

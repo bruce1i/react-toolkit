@@ -4,7 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const getConstants = require('./webpack.constants');
 
 module.exports = (env) => {
-    const {dev} = env
+    const {devMode} = env
     const constants = getConstants(env)
 
     return {
@@ -15,8 +15,8 @@ module.exports = (env) => {
                  */
                 // Options similar to the same options in webpackOptions.output
                 // both options are optional
-                filename: dev ? '[name].bundle.css' : '[name].[hash].bundle.css',
-                chunkFilename: dev ? '[id].css' : '[id].[hash].css',
+                filename: devMode ? '[name].bundle.css' : '[name].[hash].bundle.css',
+                chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
             }),
             new webpack.DefinePlugin(constants)
         ]
