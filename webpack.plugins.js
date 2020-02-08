@@ -13,8 +13,6 @@ module.exports = (env) => {
                 /**
                  * 配置参考了 https://github.com/webpack-contrib/mini-css-extract-plugin#advanced-configuration-example
                  */
-                // Options similar to the same options in webpackOptions.output
-                // both options are optional
                 filename: devMode ? '[name].bundle.css' : '[name].[hash].bundle.css',
                 chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
             }),
