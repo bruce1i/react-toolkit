@@ -9,12 +9,13 @@ module.exports = (env) => {
 
     return {
         plugins: [
+            /**
+             * mini-css-extract-plugin还需要在webpack.module.js中配置loader
+             * 配置参考了 https://github.com/webpack-contrib/mini-css-extract-plugin#advanced-configuration-example
+             */
             new MiniCssExtractPlugin({
-                /**
-                 * 配置参考了 https://github.com/webpack-contrib/mini-css-extract-plugin#advanced-configuration-example
-                 */
-                filename: devMode ? '[name].bundle.css' : '[name].[hash].bundle.css',
-                chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
+                filename: `css/[name]${devMode ? '' : '.[hash]'}.bundle.css`,
+                chunkFilename: `css/[id]${devMode ? '' : '.[hash]'}.css`,
             }),
             new webpack.DefinePlugin(constants)
         ]

@@ -3,6 +3,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = (env) => {
     const {devMode} = env
 
+    /**
+     * mini-css-extract-plugin还需要在webpack.plugins.js中配置输出文件规则
+     */
     const miniCssExtractPluginLoader = {
         loader: MiniCssExtractPlugin.loader,
         options: {
@@ -48,6 +51,14 @@ module.exports = (env) => {
         }
     }
 
+    const urlLoaderFallback = {
+        loader: 'file-loader',
+        options: {
+            name: `img/[name].[contenthash${devMode ? ':7' : ''}].[ext]`,
+            publicPath: '../',
+        }
+    }
+
     return {
         module: {
             rules: [
@@ -71,6 +82,7 @@ module.exports = (env) => {
                     loader: 'url-loader',
                     options: {
                         limit: 8192,
+                        fallback: urlLoaderFallback,
                     },
                 },
             ]

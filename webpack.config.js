@@ -32,8 +32,8 @@ module.exports = (env = {}, argv) => {
         },
         output: {
             path: path.resolve(__dirname, 'dist'), // [可省略] 默认输出到dist
-            filename: `[name]${devMode ? '' : '.[hash]'}.bundle.js`,
-            chunkFilename: `[id]${devMode ? '' : '.[hash]'}.js`,
+            filename: `js/[name]${devMode ? '' : '.[hash]'}.bundle.js`,
+            chunkFilename: `js/[id]${devMode ? '' : '.[hash]'}.js`,
         },
         plugins: [
             new HtmlWebpackPlugin({
