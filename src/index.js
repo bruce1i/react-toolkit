@@ -4,6 +4,7 @@ import {includes} from 'lodash'
 // css
 import style from './index.css'
 import css from './style/index.less'
+import portraitUrl, {ReactComponent as Portrait} from './images/icon_head.svg'
 
 console.log('> style', style)
 console.log('> css', css)
@@ -12,6 +13,9 @@ console.log('> css', css)
 // const HelloWorld = lazy(() => import('./components/hello-world'))
 const HelloWorld = lazy(() => import('@/components/hello-world'))
 const HelloWorld2 = lazy(() => import('@/components/hello-world2'))
+// assets
+import './assets/test.csv'
+import helloTxt from './assets/hello.txt'
 
 const arr1 = ['hello', 3, 'test']
 console.log('> includes world', includes(arr1, 'world'))
@@ -40,6 +44,15 @@ function App(props) {
                     <div className={css.brown}>Brown</div>
                 </div>
             </div>
+            <div>
+                <Portrait/>
+                <img src={portraitUrl} alt=""/>
+                <div className={css.divSvg}></div>
+            </div>
+            <div className={css.diyFont}>
+                这里显示的是自定义字体~Wow!
+            </div>
+            <a href={helloTxt}>点击下载文本</a>
         </div>
 
     )

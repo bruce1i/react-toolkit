@@ -31,3 +31,5 @@
 - npm install optimize-css-assets-webpack-plugin --save-dev // 压缩css文件
 #### JS相关
 - npm install terser-webpack-plugin --save-dev // 压缩js文件
+#### SVG相关
+- npm install @svgr/webpack --save-dev //svg loader，使svg模块化
