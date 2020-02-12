@@ -1,3 +1,4 @@
+import 'core-js/stable'
 import React, {lazy, Suspense} from 'react'
 import ReactDom from 'react-dom'
 import {includes} from 'lodash'
