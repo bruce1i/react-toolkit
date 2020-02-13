@@ -1,4 +1,5 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const path = require('path');
 
 module.exports = (env) => {
     const {devMode} = env
@@ -116,10 +117,26 @@ module.exports = (env) => {
                      * 非js、img、css和fonts分类的都归为assets
                      * 根据需要自己在下面添加要导出的文件格式（默认添加了文本、word和excel的文件导出作为例子）
                      */
-                    test: /\.(txt|docx?|xlsx?|csv)$/i,
+                    test: /\.(txt|md|docx?|xlsx?|csv)$/i,
                     loader: 'file-loader',
                     options: {
-                        name: `assets/[name].[contenthash${devMode ? ':7' : ''}].[ext]`,
+                        name: (file) => {
+                            console.log('--------- file-loader ---------')
+                            console.log('> file', file)
+                            // console.log('> __dirname', __dirname)
+                            const docDir = path.resolve(__dirname, 'src', 'assets', 'doc')
+                            console.log('> docDir', docDir)
+                            const re = new RegExp(`^${docDir.replace(/\\/g, '\\\\')}[\\\\/]`)
+                            if (re.test(file)) {
+                                console.log('> test true')
+                                const fileName = file.replace(docDir, '')
+                                console.log('> fileName', fileName)
+                                return `assets/doc${fileName}`
+                            }
+
+                            console.log('> test false')
+                            return 'assets/[name].[contenthash:7].[ext]';
+                        },
                     }
                 }
             ]
