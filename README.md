@@ -16,6 +16,7 @@
 - npm install webpack webpack-cli --save-dev // webpack-cli用在命令行运行webpack
 - npm install html-webpack-plugin --save-dev // 把html文件和js文件合并在一起
 - npm install webpack-dev-server --save-dev // 开发环境用的临时服务器（支持热加载）
+- npm install copy-webpack-plugin --save-dev // 文件（夹）拷贝插件，支持devServer
 - npm install rimraf --save-dev // 清除文件夹和文件
 #### Babel相关
 - npm install @babel/core @babel/preset-env --save-dev // babel核心和预置语法转换
