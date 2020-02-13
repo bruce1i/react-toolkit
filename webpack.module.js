@@ -64,7 +64,6 @@ module.exports = (env) => {
         loader: 'file-loader',
         options: {
             name: `img/[name].[contenthash${devMode ? ':7' : ''}].[ext]`,
-            publicPath: '../',
         }
     }
 
@@ -110,7 +109,6 @@ module.exports = (env) => {
                     loader: 'file-loader',
                     options: {
                         name: `fonts/[name].[contenthash${devMode ? ':7' : ''}].[ext]`,
-                        publicPath: '../',
                     }
                 },
                 {
@@ -122,7 +120,6 @@ module.exports = (env) => {
                     loader: 'file-loader',
                     options: {
                         name: `assets/[name].[contenthash${devMode ? ':7' : ''}].[ext]`,
-                        publicPath: '../',
                     }
                 }
             ]

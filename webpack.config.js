@@ -32,6 +32,7 @@ module.exports = (env = {}, argv) => {
         },
         output: {
             path: path.resolve(__dirname, 'dist'), // [可省略] 默认输出到dist
+            publicPath: '/',
             filename: `js/[name]${devMode ? '' : '.[hash]'}.bundle.js`,
             chunkFilename: `js/[id]${devMode ? '' : '.[hash]'}.js`,
         },
@@ -84,7 +85,7 @@ module.exports = (env = {}, argv) => {
             /** 设置服务器的静态目录 */
             // contentBase: './dist',
             /**
-             * 注意：编译后的文件是放在内存中的，但是会绑定到devServer中，如果想改变编译后绑定的根路径，可以设置publicPath。
+             * 注意：编译后的文件是放在内存中的，但是会绑定到devServer中，如果想改变devServer绑定的根路径，可以设置publicPath。
              * 例如编译后首页是home.html，设置了publicPath: '/test/'，那么现在访问就是http://localhost:9001/test/home.html
              */
             // publicPath: '/test/',
