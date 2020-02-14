@@ -116,27 +116,18 @@ module.exports = (env) => {
                 {
                     /**
                      * 非js、img、css和fonts分类的都归为assets
-                     * 根据需要自己在下面添加要导出的文件格式（默认添加了文本、word和excel的文件导出作为例子）
+                     * 根据需要自己在下面添加要导出的文件格式（默认添加了文本、word和excel等文件导出作为例子）
                      */
                     test: /\.(txt|md|docx?|xlsx?|csv)$/i,
                     loader: 'file-loader',
                     options: {
                         name: (file) => {
                             const docDir = path.resolve(srcDir, 'assets', 'doc')
-                            console.log('--------- file-loader ---------')
-                            console.log('> path.sep', path.sep)
-                            console.log('> srcDir', srcDir)
-                            console.log('> docDir', docDir)
-                            console.log('> file  ', file)
                             if (file.startsWith(docDir + path.sep)) {
-                                console.log('> test true')
-                                const fileName = file.replace(srcDir + path.sep, '')
-                                console.log('> fileName', fileName)
-                                return fileName
+                                return file.replace(srcDir + path.sep, '')
                             }
 
-                            console.log('> test false')
-                            return 'assets/[name].[contenthash:7].[ext]';
+                            return `assets/[name].[contenthash${devMode ? ':7' : ''}].[ext]`;
                         },
                     }
                 }
