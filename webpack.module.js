@@ -74,21 +74,35 @@ module.exports = (env) => {
             rules: [
                 {
                     test: /\.jsx?$/, // 匹配.js或.jsx
+                    exclude: /node_modules/,
                     /**
                      * 当只有一个loader时，可直接使用loader和options；多个loader要使用use。
                      * Rule.loader is a shortcut to Rule.use: [ { loader } ]
                      * Rule.options is a shortcut to Rule.use: [ { options } ]
                      */
                     loader: 'babel-loader',
-                    exclude: /node_modules/,
                 },
                 {
+                    /** 项目中创建的需要预处理的css和less */
                     test: /\.(css|less)$/,
+                    exclude: [
+                        /node_modules/,
+                        path.resolve(srcDir, 'assets', 'lib'),
+                    ],
                     /**
                      * 多个loader使用use，loader的执行顺序是倒序（从右到左，或从下到上）
                      * 支持字符串写法，例 use:['less-loader'] 是 use:[{loader:'less-loader'}]的捷径
                      */
                     use: [miniCssExtractPluginLoader, cssLoader, postcssLoader, 'less-loader'],
+                },
+                {
+                    /** node_modules和lib中的css不进行额外预处理 */
+                    test: /\.css$/,
+                    include: [
+                        /node_modules/,
+                        path.resolve(srcDir, 'assets', 'lib'),
+                    ],
+                    use: [miniCssExtractPluginLoader, cssLoader],
                 },
                 {
                     test: /\.(png|jpe?g|gif|)$/i,
