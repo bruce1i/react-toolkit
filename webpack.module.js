@@ -3,6 +3,7 @@ const path = require('path');
 
 module.exports = (env) => {
     const {devMode} = env
+    const srcDir = path.resolve(__dirname, 'src')
 
     /**
      * mini-css-extract-plugin还需要在webpack.plugins.js中配置输出文件规则
@@ -121,17 +122,17 @@ module.exports = (env) => {
                     loader: 'file-loader',
                     options: {
                         name: (file) => {
+                            const docDir = path.resolve(srcDir, 'assets', 'doc')
                             console.log('--------- file-loader ---------')
-                            console.log('> file', file)
-                            // console.log('> __dirname', __dirname)
-                            const docDir = path.resolve(__dirname, 'src', 'assets', 'doc')
+                            console.log('> path.sep', path.sep)
+                            console.log('> srcDir', srcDir)
                             console.log('> docDir', docDir)
-                            const re = new RegExp(`^${docDir.replace(/\\/g, '\\\\')}[\\\\/]`)
-                            if (re.test(file)) {
+                            console.log('> file  ', file)
+                            if (file.startsWith(docDir + path.sep)) {
                                 console.log('> test true')
-                                const fileName = file.replace(docDir, '')
+                                const fileName = file.replace(srcDir + path.sep, '')
                                 console.log('> fileName', fileName)
-                                return `assets/doc${fileName}`
+                                return fileName
                             }
 
                             console.log('> test false')
