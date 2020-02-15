@@ -2,7 +2,8 @@ const TerserJSPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = (env) => {
-    const {devMode} = env
+    // eslint-disable-next-line no-unused-vars
+    const { devMode } = env;
 
     return {
         optimization: {
@@ -28,6 +29,6 @@ module.exports = (env) => {
                 }),
                 new OptimizeCSSAssetsPlugin(),
             ],
-        }
-    }
-}
+        },
+    };
+};

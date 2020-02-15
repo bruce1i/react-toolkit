@@ -13,6 +13,7 @@
 - npm install lodash-es // 推荐从lodash过渡到lodash-es；lodash-es的优势：更小的体积，无需配置，按需打包
 
 ## 开发编译时依赖包
+#### Webpack相关
 - npm install webpack webpack-cli --save-dev // webpack-cli用在命令行运行webpack
 - npm install html-webpack-plugin --save-dev // 把html文件和js文件合并在一起
 - npm install webpack-dev-server --save-dev // 开发环境用的临时服务器（支持热加载）
@@ -35,3 +36,12 @@
 - npm install terser-webpack-plugin --save-dev // 压缩js文件
 #### SVG相关
 - npm install @svgr/webpack --save-dev //svg loader，使svg模块化
+#### ESLint相关
+- npm install eslint --save-dev
+- npm install eslint-plugin-import --save-dev
+- npm install eslint-plugin-react --save-dev
+- npm install eslint-plugin-react-hooks --save-dev
+- npm install eslint-plugin-jsx-a11y --save-dev
+- npm install eslint-config-airbnb --save-dev // 爱彼迎的eslint规则依赖上面4个包
+- npm install babel-eslint --save-dev // 识别babel语法（例如：Unexpected token import）
+- npm install eslint-loader --save-dev // 在编译代码时进行eslint检查

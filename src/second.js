@@ -1,8 +1,9 @@
 function component() {
+    window.location.href = '';
     const element = document.createElement('div');
 
     // Lodash, currently included via a script, is required for this line to work
-    element.innerHTML = 'Wow!!!'
+    element.innerHTML = 'Wow!!!';
 
     return element;
 }

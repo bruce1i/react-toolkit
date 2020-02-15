@@ -21,7 +21,7 @@ const common = {
      */
     // WC_DEMO: '"Hello Dev"',
     // WC_DEMO2: JSON.stringify('Hello Dev'),
-}
+};
 
 const constants = {
     /**
@@ -37,7 +37,7 @@ const constants = {
     },
     prod: {
         // WC_DEMO3_URL: '"http://www.prod.com"',
-    }
-}
+    },
+};
 
-module.exports = ({constEnv}) => ({...common, ...(constants[constEnv] || {})})
+module.exports = ({ constEnv }) => ({ ...common, ...(constants[constEnv] || {}) });

@@ -2,8 +2,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 
 module.exports = (env) => {
-    const {devMode} = env
-    const srcDir = path.resolve(__dirname, 'src')
+    const { devMode } = env;
+    const srcDir = path.resolve(__dirname, 'src');
 
     /**
      * mini-css-extract-plugin还需要在webpack.plugins.js中配置输出文件规则
@@ -21,8 +21,8 @@ module.exports = (env) => {
              * 参考文档：https://github.com/webpack-contrib/mini-css-extract-plugin#hot-module-reloading-hmr
              */
             reloadAll: true,
-        }
-    }
+        },
+    };
 
     const cssLoader = {
         loader: 'css-loader',
@@ -49,25 +49,26 @@ module.exports = (env) => {
              * https://github.com/webpack-contrib/css-loader/issues/228#issuecomment-312885975
              */
             // importLoaders: 0, // 不需要配置
-        }
-    }
+        },
+    };
 
     const postcssLoader = {
         loader: 'postcss-loader',
         options: {
             ident: 'postcss',
             plugins: () => [
-                require('autoprefixer')()
-            ]
-        }
-    }
+                // eslint-disable-next-line global-require
+                require('autoprefixer')(),
+            ],
+        },
+    };
 
     const urlLoaderFallback = {
         loader: 'file-loader',
         options: {
             name: `img/[name].[contenthash${devMode ? ':7' : ''}].[ext]`,
-        }
-    }
+        },
+    };
 
     return {
         module: {
@@ -118,14 +119,14 @@ module.exports = (env) => {
                      * 模块化svg作为组件使用，也可以直接作为src和url来使用
                      * 参考文档：https://react-svgr.com/docs/webpack/
                      */
-                    use: ['@svgr/webpack', 'url-loader']
+                    use: ['@svgr/webpack', 'url-loader'],
                 },
                 {
                     test: /\.(eot|ttf|woff|woff2)$/i,
                     loader: 'file-loader',
                     options: {
                         name: `fonts/[name].[contenthash${devMode ? ':7' : ''}].[ext]`,
-                    }
+                    },
                 },
                 {
                     /**
@@ -136,16 +137,16 @@ module.exports = (env) => {
                     loader: 'file-loader',
                     options: {
                         name: (file) => {
-                            const docDir = path.resolve(srcDir, 'assets', 'doc')
+                            const docDir = path.resolve(srcDir, 'assets', 'doc');
                             if (file.startsWith(docDir + path.sep)) {
-                                return file.replace(srcDir + path.sep, '')
+                                return file.replace(srcDir + path.sep, '');
                             }
 
                             return `assets/[name].[contenthash${devMode ? ':7' : ''}].[ext]`;
                         },
-                    }
-                }
-            ]
-        }
-    }
-}
+                    },
+                },
+            ],
+        },
+    };
+};
