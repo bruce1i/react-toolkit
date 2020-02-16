@@ -73,14 +73,30 @@ module.exports = (env) => {
     return {
         module: {
             rules: [
+                /**
+                 * 当只有一个loader时，可直接使用loader和options；多个loader要使用use。
+                 * Rule.loader is a shortcut to Rule.use: [ { loader } ]
+                 * Rule.options is a shortcut to Rule.use: [ { options } ]
+                 *
+                 * 多个loader使用use，loader的执行顺序是倒序（从右到左，或从下到上）。
+                 * 支持字符串写法，例 use:['less-loader'] 是 use:[{loader:'less-loader'}]的捷径。
+                 */
+                {
+                    /** 配置开发模式实时eslint检查（请不要关闭他，从这里开始养成良好的代码习惯和风格） */
+                    ...(devMode ? {
+                        enforce: 'pre',
+                        test: /\.jsx?$/, // 匹配.js或.jsx
+                        exclude: /node_modules/,
+                        loader: 'eslint-loader',
+                        options: {
+                            formatter: 'codeframe',
+                            quiet: true,
+                        },
+                    } : {}),
+                },
                 {
                     test: /\.jsx?$/, // 匹配.js或.jsx
                     exclude: /node_modules/,
-                    /**
-                     * 当只有一个loader时，可直接使用loader和options；多个loader要使用use。
-                     * Rule.loader is a shortcut to Rule.use: [ { loader } ]
-                     * Rule.options is a shortcut to Rule.use: [ { options } ]
-                     */
                     loader: 'babel-loader',
                 },
                 {
@@ -90,10 +106,6 @@ module.exports = (env) => {
                         /node_modules/,
                         path.resolve(srcDir, 'assets', 'lib'),
                     ],
-                    /**
-                     * 多个loader使用use，loader的执行顺序是倒序（从右到左，或从下到上）
-                     * 支持字符串写法，例 use:['less-loader'] 是 use:[{loader:'less-loader'}]的捷径
-                     */
                     use: [miniCssExtractPluginLoader, cssLoader, postcssLoader, 'less-loader'],
                 },
                 {
@@ -137,6 +149,7 @@ module.exports = (env) => {
                     loader: 'file-loader',
                     options: {
                         name: (file) => {
+                            // 处理src/assets/doc文件夹下的文件原样导出
                             const docDir = path.resolve(srcDir, 'assets', 'doc');
                             if (file.startsWith(docDir + path.sep)) {
                                 return file.replace(srcDir + path.sep, '');

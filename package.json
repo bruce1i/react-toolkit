@@ -5,12 +5,16 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --env.devMode --env.constEnv=dev",
-    "review": "npm run clean && webpack --env.devMode --env.constEnv=dev",
-    "build-dev": "npm run clean && webpack --env.constEnv=dev --progress",
-    "build-test": "npm run clean && webpack --env.constEnv=test --progress",
-    "build-prod": "npm run clean && webpack --env.constEnv=prod --progress",
+    "review": "npm run prebuild && webpack --env.devMode --env.constEnv=dev",
+    "build-dev": "npm run prebuild && webpack --env.constEnv=dev --progress",
+    "build-test": "npm run prebuild && webpack --env.constEnv=test --progress",
+    "build-prod": "npm run prebuild && webpack --env.constEnv=prod --progress",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "clean": "rimraf ./dist"
+    "eslint": "eslint src --ext .js --ext .jsx",
+    "eslint-q": "eslint src --ext .js --ext .jsx --quiet",
+    "eslint-fix": "eslint src --ext .js --ext .jsx --fix",
+    "clean": "rimraf ./dist",
+    "prebuild": "npm run clean && npm run eslint-q"
   },
   "repository": {
     "type": "git",
