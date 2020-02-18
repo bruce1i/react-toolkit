@@ -28,7 +28,7 @@ module.exports = (env = {}, argv) => {
          */
         mode: devMode ? 'development' : 'production',
         entry: {
-            login: './src/index.js',
+            index: './src/index.js',
             second: './src/second.js',
         },
         output: {
@@ -39,7 +39,7 @@ module.exports = (env = {}, argv) => {
         },
         plugins: [
             new HtmlWebpackPlugin({
-                chunks: ['login'],
+                chunks: ['index'],
                 template: './src/index.ejs',
                 filename: 'index.html',
             }),
@@ -83,6 +83,14 @@ module.exports = (env = {}, argv) => {
              */
             host: '0.0.0.0',
             useLocalIp: true,
+            historyApiFallback: {
+                rewrites: [
+                    {
+                        from: /^\//,
+                        to: '/index.html',
+                    },
+                ],
+            },
             /** 设置服务器的静态目录 */
             // contentBase: './dist',
             /**

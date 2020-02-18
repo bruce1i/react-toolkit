@@ -5,7 +5,7 @@
 - npm install react-router-dom // 不需要安装react-router，react-router-dom是DOM bindings for React Router
 - npm install react-router-config // 【辅助包，已安装】通过路由配置项（对象数组）生成路由节点
 - npm install redux
-- npm install react-redux // 使用connect连接redux
+- npm install react-redux // 提供connect方法让你连接组件到store
 - npm install @reduxjs/toolkit // 【辅助包，已安装】redux官方推荐工具包
 - npm install connected-react-router // 【辅助包，自行按需安装】绑定react路由到redux，可以使用dispatch发送路由跳转
 - npm install core-js // 浏览器垫片
