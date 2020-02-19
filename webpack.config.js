@@ -83,14 +83,16 @@ module.exports = (env = {}, argv) => {
              */
             host: '0.0.0.0',
             useLocalIp: true,
-            historyApiFallback: {
-                rewrites: [
-                    {
-                        from: /^\//,
-                        to: '/index.html',
-                    },
-                ],
-            },
+            /**
+             * 可以自制定fallback规则，但大多数情况true就够用了（退回到index.html）。
+             * 注意：如果设置了自定义fallback规则，后端服务器（例如Nginx）需要和你的规则保持一直。
+             * historyApiFallback: {
+             *   rewrites: [
+             *     { from: /^\//, to: '/index.html' },
+             *   ],
+             * },
+             */
+            historyApiFallback: true,
             /** 设置服务器的静态目录 */
             // contentBase: './dist',
             /**
