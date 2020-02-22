@@ -1,29 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import routes from '@/pages/main/routes';
+import reducer from '@/pages/main/reducer';
 // components
 // code here...
 
-const reducer = (preState, action) => {
-    const defState = {
-        test1: 'hello',
-        test2: 'world',
-    };
+console.log('> reuder', reducer);
+const cr = combineReducers(reducer);
+console.log('> cr', cr);
 
-    switch (action.type) {
-    case 'changeTest1Value':
-        return { ...preState, test1: action.payload };
-    case 'test2':
-        return { ...preState, test2: action.payload };
-    default:
-        return defState;
-    }
-};
-
-const store = createStore(reducer);
+const store = createStore(cr);
 
 function Main() {
     return (

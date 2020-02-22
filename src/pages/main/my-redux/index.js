@@ -6,16 +6,22 @@ import SubRedux from '@/pages/main/my-redux/sub-redux';
 
 function MyRedux(props) {
     const {
-        test1,
+        test,
         dispatch,
     } = props;
     console.log('> MyRedux props', props);
-    console.log('> test1', test1);
+    console.log('> test', test);
 
-    const handleChangeTest1ValueClick = () => {
+    const handleChangeTestValueClick = () => {
         dispatch({
-            type: 'changeTest1Value',
+            type: 'hello',
             payload: 'wow',
+        });
+    };
+
+    const handleResetTestValueClick = () => {
+        dispatch({
+            type: 'reset',
         });
     };
 
@@ -23,7 +29,8 @@ function MyRedux(props) {
         <div>
             My Redux
             <div>
-                <button type="button" onClick={handleChangeTest1ValueClick}>change test1 value to wow</button>
+                <button type="button" onClick={handleChangeTestValueClick}>change test value to wow</button>
+                <button type="button" onClick={handleResetTestValueClick}>reset test value</button>
                 <SubRedux superProps={props} a="abc" b />
             </div>
         </div>
