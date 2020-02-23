@@ -10,6 +10,7 @@
 - npm install react-redux // 提供connect方法让你连接组件到store
 - npm install @reduxjs/toolkit // 【辅助包，已安装】redux官方推荐工具包
 - npm install redux-actions // 创建和处理action的辅助包
+- npm install redux-thunk // 提供异步dispatch方法和副作用逻辑
 #### 推荐库
 - npm install core-js // 浏览器垫片（需在babel配置文件中配置使用方式）
 - npm install lodash-es // 推荐从lodash过渡到lodash-es；lodash-es的优势：更小的体积，无需配置，按需打包

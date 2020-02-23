@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 
 import SubRedux from '@/pages/main/my-redux/sub-redux';
 import { update, say, reset } from '@/pages/main/reducer/redux-actions-demo';
+import thunk from '@/pages/main/thunk/redux-actions-demo';
+
+const { asyncSay } = thunk;
 
 function MyRedux(props) {
     const {
@@ -41,6 +44,12 @@ function MyRedux(props) {
         dispatch(reset());
     };
 
+    const handleAsyncSayClick = () => {
+        dispatch(asyncSay('wow, hello world!', () => {
+            console.log('> done');
+        }));
+    };
+
     return (
         <div>
             My Redux
@@ -53,6 +62,9 @@ function MyRedux(props) {
                 <button type="button" onClick={handleUpdateClick}>update</button>
                 <button type="button" onClick={handleSayClick}>say</button>
                 <button type="button" onClick={handleResetClick}>reset</button>
+                <hr />
+                <hr />
+                <button type="button" onClick={handleAsyncSayClick}>async say</button>
                 <hr />
                 <SubRedux superProps={props} a="abc" b />
             </div>
