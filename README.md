@@ -1,16 +1,20 @@
 # react-toolkit
 
 ## 项目核心依赖包
+#### React相关
 - npm install react react-dom
 - npm install react-router-dom // 不需要安装react-router，react-router-dom是DOM bindings for React Router
 - npm install react-router-config // 【辅助包，已安装】通过路由配置项（对象数组）生成路由节点
+#### Redux相关
 - npm install redux
 - npm install react-redux // 提供connect方法让你连接组件到store
 - npm install @reduxjs/toolkit // 【辅助包，已安装】redux官方推荐工具包
-- npm install connected-react-router // 【辅助包，自行按需安装】绑定react路由到redux，可以使用dispatch发送路由跳转
-- npm install core-js // 浏览器垫片
+- npm install redux-actions // 创建和处理action的辅助包
 #### 推荐库
+- npm install core-js // 浏览器垫片（需在babel配置文件中配置使用方式）
 - npm install lodash-es // 推荐从lodash过渡到lodash-es；lodash-es的优势：更小的体积，无需配置，按需打包
+#### 自行按需安装辅助包
+- npm install connected-react-router // 【辅助包，自行按需安装】绑定react路由到redux，可以使用dispatch发送路由跳转
 
 ## 开发编译时依赖包
 #### Webpack相关
