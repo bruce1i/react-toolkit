@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import {
+    createStore, combineReducers, applyMiddleware, compose,
+} from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import routes from '@/pages/main/routes';
@@ -13,7 +15,9 @@ console.log('> reuder', reducer);
 const cr = combineReducers(reducer);
 console.log('> cr', cr);
 
-const store = createStore(cr, applyMiddleware(thunk));
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const store = createStore(cr, composeEnhancers(applyMiddleware(thunk)));
 
 function Main() {
     return (
