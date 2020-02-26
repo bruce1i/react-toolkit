@@ -1,14 +1,18 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import SubRedux from '@/pages/main/my-redux/sub-redux';
 import { update, say, reset } from '@/pages/main/reducer/redux-actions-demo';
 import thunk from '@/pages/main/thunk/redux-actions-demo';
 
-const { asyncSay } = thunk;
+const {
+    asyncSay, promiseSay, goToAboutMe, goToAboutMe2,
+} = thunk;
 
 function MyRedux(props) {
+    const history = useHistory();
     const {
         test,
         reduxActionsDemo,
@@ -50,6 +54,23 @@ function MyRedux(props) {
         }));
     };
 
+    const handlePromiseSayClick = () => {
+        dispatch(promiseSay('This is promise.'))
+            .then(() => {
+                console.log('> promise done');
+            });
+    };
+
+    const handleGoToAboutMe = () => {
+        dispatch(goToAboutMe());
+    };
+
+    const handleGoToAboutMe2 = () => {
+        dispatch(goToAboutMe2(() => {
+            history.push('/about-me');
+        }));
+    };
+
     return (
         <div>
             My Redux
@@ -64,7 +85,11 @@ function MyRedux(props) {
                 <button type="button" onClick={handleResetClick}>reset</button>
                 <hr />
                 <hr />
+                <h3>Thunk</h3>
                 <button type="button" onClick={handleAsyncSayClick}>async say</button>
+                <button type="button" onClick={handlePromiseSayClick}>promise say</button>
+                <button type="button" onClick={handleGoToAboutMe}>go to About Me</button>
+                <button type="button" onClick={handleGoToAboutMe2}>go to About Me2</button>
                 <hr />
                 <SubRedux superProps={props} a="abc" b />
             </div>
