@@ -6,8 +6,10 @@ import {
 } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
+import createSagaMiddleware from 'redux-saga';
 import routes from '@/pages/main/routes';
 import reducer from '@/pages/main/reducer';
+import helloSaga from '@/pages/main/saga/hello';
 // components
 // code here...
 
@@ -16,8 +18,11 @@ const cr = combineReducers(reducer);
 console.log('> cr', cr);
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const sagaMiddleware = createSagaMiddleware();
 
-const store = createStore(cr, composeEnhancers(applyMiddleware(thunk)));
+const store = createStore(cr, composeEnhancers(applyMiddleware(thunk, sagaMiddleware)));
+
+sagaMiddleware.run(helloSaga);
 
 function Main() {
     return (
