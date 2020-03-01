@@ -3,6 +3,7 @@
 ## 项目核心依赖包
 #### React相关
 - npm install react react-dom
+- npm install prop-types // prop类型检测
 - npm install react-router-dom // 不需要安装react-router，react-router-dom是DOM bindings for React Router
 - npm install react-router-config // 【辅助包，已安装】通过路由配置项（对象数组）生成路由节点
 #### Redux相关

@@ -1,17 +1,25 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function TestChildren(props) {
+    const { children } = props;
     console.log('> props', props);
-    // eslint-disable-next-line react/prop-types,react/destructuring-assignment
-    console.log('> props.children', props.children);
+    console.log('> props.children', children);
     return (
         <div>
             Test Children
             <br />
-            {/* eslint-disable-next-line react/destructuring-assignment,react/prop-types */}
-            {props.children}
+            {children}
         </div>
     );
 }
+
+TestChildren.propTypes = {
+    children: PropTypes.element,
+};
+
+TestChildren.defaultProps = {
+    children: <></>,
+};
 
 export default TestChildren;
