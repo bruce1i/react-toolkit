@@ -33,6 +33,8 @@ function Main() {
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/about-me">About Me</Link></li>
                     <li><Link to="/my-redux">My Redux</Link></li>
+                    <li><Link to="/use-reducer">useReducer Demo</Link></li>
+                    <li><Link to="/use-context">useContext Demo</Link></li>
                 </ul>
                 {renderRoutes(routes)}
             </div>
