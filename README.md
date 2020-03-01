@@ -25,7 +25,8 @@
 - npm install html-webpack-plugin --save-dev // 把html文件和js文件合并在一起
 - npm install webpack-dev-server --save-dev // 开发环境用的临时服务器（支持热加载）
 - npm install copy-webpack-plugin --save-dev // 文件（夹）拷贝插件，支持devServer
-- npm install rimraf --save-dev // 清除文件夹和文件
+- npm install hard-source-webpack-plugin --save-dev // 编译缓存，加速编译速度
+- npm install rimraf --save-dev // 清除文件夹和文件 
 #### Babel相关
 - npm install @babel/core @babel/preset-env --save-dev // babel核心和预置语法转换
 - npm install @babel/preset-react --save-dev // 支持转换jsx语法
