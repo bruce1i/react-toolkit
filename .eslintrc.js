@@ -29,5 +29,6 @@ module.exports = {
         'react/jsx-filename-extension': ['warn', { extensions: ['.js', '.jsx'] }],
         // off
         'import/no-unresolved': ['off'], // 关闭原因：无法正确解析webpack别名
+        'import/no-extraneous-dependencies': ['off'], // 关闭原因：Mac上eslint解析别名有BUG
     }
 };
