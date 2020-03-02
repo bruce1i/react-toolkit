@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Demo</title>
     <script src="/assets/lib/jquery.js"></script>
+    <script>
+        console.info('%c> process.env.NODE_ENV:%c <%= process.env.NODE_ENV %>', 'color: blue', 'color: red')
+    </script>
 </head>
 <body>
-<div>MODE: <%= process.env.NODE_ENV %></div>
 <div id="app"></div>
 </body>
 </html>
