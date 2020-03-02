@@ -16,7 +16,7 @@
     "eslint-fix": "eslint src --ext .js --ext .jsx --fix",
     "clean": "rimraf ./dist",
     "prebuild": "npm run clean && npm run eslint-q",
-    "serve": "serve dist"
+    "serve": "serve dist -s"
   },
   "repository": {
     "type": "git",
