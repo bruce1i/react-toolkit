@@ -31,6 +31,7 @@
   "homepage": "https://github.com/bruce1i/react-toolkit#readme",
   "dependencies": {
     "@reduxjs/toolkit": "^1.2.1",
+    "classnames": "^2.2.6",
     "core-js": "^3.6.4",
     "lodash-es": "^4.17.15",
     "prop-types": "^15.7.2",

@@ -1,0 +1,43 @@
+@headerHeight: 60px;
+@sidebarWidth: 260px;
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: @headerHeight;
+  background-color: white;
+  box-shadow: 0 3px 3px rgba(128, 128, 128, 0.2);
+  z-index: 3;
+
+  .name {
+    line-height: @headerHeight;
+    font-size: 22px;
+    margin-left: 15px;
+  }
+}
+
+.sidebar {
+  position: absolute;
+  top: @headerHeight;
+  left: 0;
+  bottom: 0;
+  width: @sidebarWidth;
+  background-color: #eff0f5;
+  box-sizing: border-box;
+  border-right: solid 1px #e5e5e5;
+  padding: 30px 5px 5px 5px;
+  z-index: 2;
+}
+
+.main {
+  position: absolute;
+  top: @headerHeight;
+  left: @sidebarWidth;
+  right: 0;
+  bottom: 0;
+  background-color: white;
+  padding: 30px 50px 5px 50px;
+  z-index: 1;
+}
