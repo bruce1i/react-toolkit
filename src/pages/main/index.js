@@ -10,6 +10,9 @@ import createSagaMiddleware from 'redux-saga';
 // import routes from '@/pages/main/routes';
 import reducer from '@/pages/main/reducer';
 import helloSaga from '@/pages/main/saga/hello';
+import { ConfigProvider as AntdConfigProvider } from 'antd';
+import zhCN from 'antd/es/locale/zh_CN';
+import 'antd/dist/antd.css';
 // components
 import Layout from '@/pages/main/layout';
 
@@ -38,7 +41,9 @@ function Main() {
             {/*    </ul> */}
             {/*    {renderRoutes(routes)} */}
             {/* </div> */}
-            <Layout />
+            <AntdConfigProvider locale={zhCN}>
+                <Layout />
+            </AntdConfigProvider>
         </Provider>
     );
 }

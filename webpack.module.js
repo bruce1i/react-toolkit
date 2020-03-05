@@ -115,7 +115,7 @@ module.exports = (env) => {
                         /node_modules/,
                         path.resolve(srcDir, 'assets', 'lib'),
                     ],
-                    use: [miniCssExtractPluginLoader, cssLoader],
+                    use: [miniCssExtractPluginLoader, 'css-loader'],
                 },
                 {
                     test: /\.(png|jpe?g|gif|)$/i,

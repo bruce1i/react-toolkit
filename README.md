@@ -14,6 +14,7 @@
 - npm install redux-thunk // 提供异步dispatch方法和副作用逻辑
 - npm install redux-saga // 处理副作用，跟redux-thunk处理副作用的方式不同，但是两者可以很好的共存
 #### 推荐库
+- npm install antd
 - npm install classnames // 有条件地连接样式名称
 - npm install core-js // 浏览器垫片（需在babel配置文件中配置使用方式）
 - npm install lodash-es // 推荐从lodash过渡到lodash-es；lodash-es的优势：更小的体积，无需配置，按需打包
