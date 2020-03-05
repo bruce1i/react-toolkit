@@ -7,6 +7,7 @@ import { Redirect } from 'react-router-dom';
 import LongPage from '@/pages/main/pages/long-page';
 import ChildrenPage from '@/pages/main/pages/children-page';
 import ChildrenInside from '@/pages/main/pages/children-page/pages/inside';
+import I18n from '@/pages/main/pages/i18n';
 
 const routes = [
     {
@@ -39,7 +40,7 @@ const routes = [
             {
                 name: '国际化',
                 path: '/demo/i18n',
-                component: () => <div>I18n</div>,
+                component: I18n,
             },
             {
                 path: '/demo/no-name',
