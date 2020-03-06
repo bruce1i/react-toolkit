@@ -16,7 +16,7 @@
 #### 推荐库
 - npm install antd
 - npm install classnames // 有条件地连接样式名称
-- npm install core-js // 浏览器垫片（需在babel配置文件中配置使用方式）
+- npm install core-js regenerator-runtime // 浏览器垫片（需在babel配置文件中配置使用方式）; IE需要regenerator-runtime运行时
 - npm install lodash-es // 推荐从lodash过渡到lodash-es；lodash-es的优势：更小的体积，无需配置，按需打包
 #### 自行按需安装辅助包
 - npm install connected-react-router // 【辅助包，自行按需安装】绑定react路由到redux，可以使用dispatch发送路由跳转

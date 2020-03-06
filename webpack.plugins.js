@@ -24,6 +24,10 @@ module.exports = (env) => {
     ];
 
     if (devMode) {
+        /**
+         * 配置编译缓存，提高编译速度
+         * 注意：清除编译缓存需要手动删除 node_modules/.cache/hard-source 文件夹
+         */
         plugins.push(new HardSourceWebpackPlugin());
         plugins.push(new HardSourceWebpackPlugin.ExcludeModulePlugin([{
             /**
