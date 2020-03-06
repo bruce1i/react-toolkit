@@ -7,6 +7,7 @@ import { Redirect } from 'react-router-dom';
 import LongPage from '@/pages/main/pages/long-page';
 import ChildrenPage from '@/pages/main/pages/children-page';
 import ChildrenInside from '@/pages/main/pages/children-page/pages/inside';
+import MultiBlock from '@/pages/main/pages/multi-block';
 import I18n from '@/pages/main/pages/i18n';
 
 const routes = [
@@ -36,6 +37,11 @@ const routes = [
                 name: '子页面',
                 path: '/demo/children',
                 component: ChildrenPage,
+            },
+            {
+                name: '多区块',
+                path: '/demo/multi-block',
+                component: MultiBlock,
             },
             {
                 name: '国际化',
