@@ -65,19 +65,19 @@ body {
   right: 0;
   bottom: 0;
   box-sizing: border-box;
-  padding: @margin @margin @marginBottom @margin;
+  padding: @margin @margin 0 @margin;
   overflow: auto;
   z-index: 1;
 
   > div {
-    padding: 10px 20px 30px 20px;
+    padding: 10px 20px 25px 20px;
     background: white;
     box-shadow: 2px 2px 4px lightgray;
     border-radius: 3px;
-    margin-top: 20px;
+    margin-bottom: 20px;
 
-    &:first-child {
-      margin-top: 0;
+    &:last-child {
+      margin-bottom: @marginBottom;
     }
   }
 }
