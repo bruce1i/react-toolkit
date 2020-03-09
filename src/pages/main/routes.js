@@ -9,6 +9,7 @@ import ChildrenPage from '@/pages/main/pages/children-page';
 import ChildrenInside from '@/pages/main/pages/children-page/pages/inside';
 import MultiBlock from '@/pages/main/pages/multi-block';
 import I18n from '@/pages/main/pages/i18n';
+import ForTest from '@/pages/main/pages/for-test';
 
 const routes = [
     {
@@ -47,6 +48,11 @@ const routes = [
                 name: '国际化',
                 path: '/demo/i18n',
                 component: I18n,
+            },
+            {
+                name: '测试',
+                path: '/demo/test',
+                component: ForTest,
             },
             {
                 path: '/demo/no-name',

@@ -56,3 +56,8 @@
 - npm install eslint-config-airbnb --save-dev // 爱彼迎的eslint规则依赖上面4个包
 - npm install babel-eslint --save-dev // 识别babel语法（例如：Unexpected token import）
 - npm install eslint-loader --save-dev // 在编译代码时进行eslint检查
+#### 测试相关
+- npm install jest --save-dev // jest会自动安装babel-jest包（jest是在node下跑的，node本身不支持import语法，需要babel来转换）
+- npm install @testing-library/react --save-dev // 官方推荐测试包（不要再使用react-testing-library包了，该包已经废弃了）
+- npm install @testing-library/jest-dom --save-dev //【辅助包，已安装】扩展jest的matcher，更方便的操作dom
+
