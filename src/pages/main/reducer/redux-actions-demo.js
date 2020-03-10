@@ -1,30 +1,31 @@
-import { createActions } from 'redux-actions';
-import { createReducer } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
-const name = 'reduxActionsDemo';
-
-// action
-export const {
-    update,
-    say,
-    reset,
-} = createActions('update', 'say', 'reset', { prefix: name });
-
-// reducer
-const initState = {
+const initialState = {
     time: undefined,
     hello: 'hi',
 };
 
 /* eslint-disable no-param-reassign */
-const reducer = createReducer(initState, {
-    [update]: (state, { payload }) => {
-        state.time = payload;
+const { actions, name, reducer } = createSlice({
+    name: 'reduxActionsDemo',
+    initialState,
+    reducers: {
+        update(state, { payload }) {
+            state.time = payload;
+        },
+        say(state, { payload }) {
+            state.hello = payload;
+        },
+        reset() {
+            return { ...initialState };
+        },
     },
-    [say]: (state, { payload }) => {
-        state.hello = payload;
-    },
-    [reset]: () => ({ ...initState }),
 });
+
+export const {
+    update,
+    say,
+    reset,
+} = actions;
 
 export default [name, reducer];

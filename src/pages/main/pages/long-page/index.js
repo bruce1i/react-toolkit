@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import thunk from '@/pages/main/thunk/redux-actions-demo';
-import { update } from '@/pages/main/reducer/redux-actions-demo';
+import * as actions from '@/pages/main/reducer/redux-actions-demo';
 
 import style from './index.less';
 
 const { promiseSay } = thunk;
+const { update } = actions;
 
 function LongPage(props) {
     console.log('> props', props);
