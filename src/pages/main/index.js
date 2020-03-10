@@ -1,13 +1,7 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
-// import { renderRoutes } from 'react-router-config';
-import {
-    createStore, combineReducers, applyMiddleware, compose,
-} from 'redux';
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
 import createSagaMiddleware from 'redux-saga';
-// import routes from '@/pages/main/routes';
 import reducer from '@/pages/main/reducer';
 import helloSaga from '@/pages/main/saga/hello';
 import { ConfigProvider as AntdConfigProvider } from 'antd';
@@ -17,13 +11,14 @@ import 'antd/dist/antd.css';
 import Layout from '@/pages/main/layout';
 
 console.log('> reuder', reducer);
-const cr = combineReducers(reducer);
-console.log('> cr', cr);
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const sagaMiddleware = createSagaMiddleware();
 
-const store = createStore(cr, composeEnhancers(applyMiddleware(thunk, sagaMiddleware)));
+const store = configureStore({
+    reducer,
+    // 如果不需要saga，middleware可以不用配置，默认包含了thunk
+    middleware: [...getDefaultMiddleware(), sagaMiddleware],
+});
 
 sagaMiddleware.run(helloSaga);
 

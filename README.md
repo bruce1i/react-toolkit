@@ -1,5 +1,18 @@
 # react-toolkit
 
+## Demo-3改动
+- 使用@reduxjs/toolkit重构
+###### 说明
+- @reduxjs/toolkit提供的configureStore方法已经整合了
+redux的createStore, combineReducers, applyMiddleware, compose的方法，
+所以现在已经不需要redux包了。
+- 由于@reduxjs/toolkit默认提供了redux-thunk，所以redux-thunk包也不需要了。
+- configureStore接收两个类型参数，标准reducer方法或根reducer对象，根reducer会先调用combineReducers，所以不需要单独绑定了。
+- 不需要手动配置window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__了
+###### todo
+- 移除redux安装包，@reduxjs/toolkit包含了该安装包
+- 移除redux-thunk安装包，@reduxjs/toolkit包含了该安装包
+
 ## 项目核心依赖包
 #### React相关
 - npm install react react-dom
