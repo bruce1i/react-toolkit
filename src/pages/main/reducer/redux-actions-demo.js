@@ -1,4 +1,5 @@
-import { createActions, handleActions } from 'redux-actions';
+import { createActions } from 'redux-actions';
+import { createReducer } from '@reduxjs/toolkit';
 
 const name = 'reduxActionsDemo';
 
@@ -15,10 +16,15 @@ const initState = {
     hello: 'hi',
 };
 
-const reducer = handleActions({
-    [update]: (state, { payload }) => ({ ...state, time: payload }),
-    [say]: (state, { payload }) => ({ ...state, hello: payload }),
+/* eslint-disable no-param-reassign */
+const reducer = createReducer(initState, {
+    [update]: (state, { payload }) => {
+        state.time = payload;
+    },
+    [say]: (state, { payload }) => {
+        state.hello = payload;
+    },
     [reset]: () => ({ ...initState }),
-}, initState);
+});
 
 export default [name, reducer];

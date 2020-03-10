@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import thunk from '@/pages/main/thunk/redux-actions-demo';
+import { update } from '@/pages/main/reducer/redux-actions-demo';
 
 import style from './index.less';
 
@@ -22,10 +23,15 @@ function LongPage(props) {
         dispatch(promiseSay('hello'));
     };
 
+    const handleUpdateClick = () => {
+        dispatch(update(Date.now()));
+    };
+
     return (
         <div className={style.main}>
             <h2>长页面</h2>
             <button type="button" onClick={handleSayHelloClick}>say hello</button>
+            <button type="button" onClick={handleUpdateClick}>Update</button>
         </div>
     );
 }
