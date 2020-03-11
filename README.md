@@ -2,18 +2,15 @@
 
 ## Demo-3改动
 - 使用@reduxjs/toolkit重构
-###### 说明
-- @reduxjs/toolkit提供的configureStore方法已经整合了
-redux的createStore, combineReducers, applyMiddleware, compose的方法，
-所以现在已经不需要redux包了。
-- 由于@reduxjs/toolkit默认提供了redux-thunk，所以redux-thunk包也不需要了。
-- configureStore接收两个类型参数，标准reducer方法或根reducer对象，根reducer会先调用combineReducers，所以不需要单独绑定了。
-- 不需要手动配置window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__了
-- @reduxjs/toolkit的createSlice支持添加action的类型前缀，就不再需要redux-actions包了
-###### todo
-- 移除redux安装包，@reduxjs/toolkit包含了该安装包
-- 移除redux-thunk安装包，@reduxjs/toolkit包含了该安装包
+- 移除redux安装包
+- 移除redux-thunk安装包
 - 移除redux-actions安装包
+#### 小结
+@reduxjs/toolkit确实简化了redux的配置，减少了很多代码。
+不需要手动配置Redux DevTools Extension了、
+不需要引用redux包了（已经封装进去了）、
+不需要引用redux-thunk包了（已经封装进去了）、
+不在需要redux-actions辅助包了（@reduxjs/toolkit的createSlice提供了添加类型前缀的功能）。
 
 ## 项目核心依赖包
 #### React相关
@@ -22,19 +19,14 @@ redux的createStore, combineReducers, applyMiddleware, compose的方法，
 - npm install react-router-dom // 不需要安装react-router，react-router-dom是DOM bindings for React Router
 - npm install react-router-config // 【辅助包，已安装】通过路由配置项（对象数组）生成路由节点
 #### Redux相关
-- npm install redux
 - npm install react-redux // 提供connect方法让你连接组件到store
 - npm install @reduxjs/toolkit // 【辅助包，已安装】redux官方推荐工具包
-- npm install redux-actions // 创建和处理action的辅助包
-- npm install redux-thunk // 提供异步dispatch方法和副作用逻辑
 - npm install redux-saga // 处理副作用，跟redux-thunk处理副作用的方式不同，但是两者可以很好的共存
 #### 推荐库
 - npm install antd
 - npm install classnames // 有条件地连接样式名称
 - npm install core-js regenerator-runtime // 浏览器垫片（需在babel配置文件中配置使用方式）; IE需要regenerator-runtime运行时
 - npm install lodash-es // 推荐从lodash过渡到lodash-es；lodash-es的优势：更小的体积，无需配置，按需打包
-#### 自行按需安装辅助包
-- npm install connected-react-router // 【辅助包，自行按需安装】绑定react路由到redux，可以使用dispatch发送路由跳转
 
 ## 开发编译时依赖包
 #### Webpack相关
@@ -75,4 +67,3 @@ redux的createStore, combineReducers, applyMiddleware, compose的方法，
 - npm install jest --save-dev // jest会自动安装babel-jest包（jest是在node下跑的，node本身不支持import语法，需要babel来转换）
 - npm install @testing-library/react --save-dev // 官方推荐测试包（不要再使用react-testing-library包了，该包已经废弃了）
 - npm install @testing-library/jest-dom --save-dev //【辅助包，已安装】扩展jest的matcher，更方便的操作dom
-
