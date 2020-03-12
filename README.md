@@ -24,6 +24,7 @@
 - npm install redux-saga // 处理副作用，跟redux-thunk处理副作用的方式不同，但是两者可以很好的共存
 #### React热加载
 - npm install react-hot-loader
+- npm install @hot-loader/react-dom // 支持hooks热加载
 #### 推荐库
 - npm install antd
 - npm install classnames // 有条件地连接样式名称

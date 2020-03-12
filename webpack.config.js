@@ -49,6 +49,8 @@ module.exports = (env = {}, argv) => {
             alias: {
                 lodash: 'lodash-es', // 为lodash-es设置别名，现在import 'lodash'引入的是lodash-es。
                 '@': path.resolve(__dirname, 'src'),
+                // 配置react hot loader支持hooks。注意，只在开发模式下配置。
+                ...(devMode ? { 'react-dom': '@hot-loader/react-dom' } : {}),
             },
             /**
              * 可以不用配置该项，默认值为['.wasm', '.mjs', '.js', '.json']。
