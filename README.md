@@ -22,6 +22,8 @@
 - npm install react-redux // 提供connect方法让你连接组件到store
 - npm install @reduxjs/toolkit // 【辅助包，已安装】redux官方推荐工具包
 - npm install redux-saga // 处理副作用，跟redux-thunk处理副作用的方式不同，但是两者可以很好的共存
+#### React热加载
+- npm install react-hot-loader
 #### 推荐库
 - npm install antd
 - npm install classnames // 有条件地连接样式名称
@@ -37,6 +39,7 @@
 - npm install hard-source-webpack-plugin --save-dev // 编译缓存，加速编译速度
 - npm install rimraf --save-dev // 清除文件夹和文件
 - npm install serve --save-dev // 傻瓜静态服务器，文档见 https://github.com/zeit/serve
+- npm install cross-env --save-dev // 配置跨平台环境变量
 #### Babel相关
 - npm install @babel/core @babel/preset-env --save-dev // babel核心和预置语法转换
 - npm install @babel/preset-react --save-dev // 支持转换jsx语法

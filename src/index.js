@@ -1,22 +1,10 @@
+// Make sure react-hot-loader is required before react and react-dom
+import 'react-hot-loader';
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
-import React, { Suspense } from 'react';
+import React from 'react';
 import ReactDom from 'react-dom';
 
-import { BrowserRouter } from 'react-router-dom';
-import { renderRoutes } from 'react-router-config';
+import App from '@/app';
 
-import routes from '@/routes';
-
-function App() {
-    return (
-        <BrowserRouter>
-            <Suspense fallback={<div>Loading...</div>}>
-                {renderRoutes(routes)}
-            </Suspense>
-        </BrowserRouter>
-    );
-}
-
-const $app = document.getElementById('app');
-ReactDom.render(<App />, $app);
+ReactDom.render(<App />, document.getElementById('app'));
