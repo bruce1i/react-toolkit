@@ -71,3 +71,5 @@
 - npm install jest --save-dev // jest会自动安装babel-jest包（jest是在node下跑的，node本身不支持import语法，需要babel来转换）
 - npm install @testing-library/react --save-dev // 官方推荐测试包（不要再使用react-testing-library包了，该包已经废弃了）
 - npm install @testing-library/jest-dom --save-dev //【辅助包，已安装】扩展jest的matcher，更方便的操作dom
+#### Mock相关
+- npm install json-server --save-dev // Get a full fake REST API
