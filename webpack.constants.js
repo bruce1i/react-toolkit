@@ -21,6 +21,7 @@ const common = {
      */
     // WC_DEMO: '"Hello Dev"',
     // WC_DEMO2: JSON.stringify('Hello Dev'),
+    WC_MOCK_SERVER: 'http://localhost:3000',
 };
 
 const constants = {
@@ -31,12 +32,15 @@ const constants = {
      */
     dev: {
         // WC_DEMO3_URL: '"http://www.dev.com"',
+        WC_API_SERVER: 'http://0.0.0.0',
     },
     test: {
         // WC_DEMO3_URL: '"http://www.test.com"',
+        WC_API_SERVER: 'http://0.0.0.0',
     },
     prod: {
         // WC_DEMO3_URL: '"http://www.prod.com"',
+        WC_API_SERVER: 'http://0.0.0.0',
     },
 };
 

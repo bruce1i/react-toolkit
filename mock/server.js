@@ -21,5 +21,5 @@ server.use(compatible);
 server.use(jsonServer.rewriter(routes));
 server.use(router);
 server.listen(3000, () => {
-    console.log('JSON Server is running');
+    console.log('Mock Server is running');
 });

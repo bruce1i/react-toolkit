@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const getWebpackModule = require('./webpack.module');
 const getWebpackPlugins = require('./webpack.plugins');
 const getWebpackOptimization = require('./webpack.optimization');
+const getConstants = require('./webpack.constants');
 
 
 module.exports = (env = {}, argv) => {
@@ -17,8 +18,8 @@ module.exports = (env = {}, argv) => {
     const { module } = getWebpackModule(env);
     const { plugins } = getWebpackPlugins(env);
     const { optimization } = getWebpackOptimization(env);
+    const { WC_MOCK_SERVER, WC_API_SERVER } = getConstants(env);
     console.log('> env', env);
-    console.log('> devMode', devMode);
     console.log('> mock', mock);
 
     return {
@@ -103,9 +104,13 @@ module.exports = (env = {}, argv) => {
              * 例如编译后首页是home.html，设置了publicPath: '/test/'，那么现在访问就是http://localhost:9001/test/home.html
              */
             // publicPath: '/test/',
-            /** 配置代理 */
+            /**
+             * 配置代理
+             * 默认mock服务器：http://localhost:3000，如需修改mock服务器端口，在mock/server.js中修改。
+             * mock服务器和api服务器的地址在webpack.constants.js中管理。
+             */
             proxy: {
-                '/api/': 'http://localhost:3000',
+                '/api/': mock ? WC_MOCK_SERVER : WC_API_SERVER,
             },
         },
     };
