@@ -41,6 +41,7 @@
 - npm install rimraf --save-dev // 清除文件夹和文件
 - npm install serve --save-dev // 傻瓜静态服务器，文档见 https://github.com/zeit/serve
 - npm install cross-env --save-dev // 配置跨平台环境变量
+- npm install npm-run-all --save-dev // 并行启动多个脚本
 #### Babel相关
 - npm install @babel/core @babel/preset-env --save-dev // babel核心和预置语法转换
 - npm install @babel/preset-react --save-dev // 支持转换jsx语法

@@ -5,7 +5,6 @@ const getWebpackPlugins = require('./webpack.plugins');
 const getWebpackOptimization = require('./webpack.optimization');
 
 
-// eslint-disable-next-line no-unused-vars
 module.exports = (env = {}, argv) => {
     /**
      * 注意，环境变量限制入参只能是对象（足够使用了），不能是字符串和数组。
@@ -14,11 +13,13 @@ module.exports = (env = {}, argv) => {
      * https://webpack.js.org/api/cli/#environment-options
      */
     const { devMode } = env;
+    const { mock } = argv;
     const { module } = getWebpackModule(env);
     const { plugins } = getWebpackPlugins(env);
     const { optimization } = getWebpackOptimization(env);
     console.log('> env', env);
     console.log('> devMode', devMode);
+    console.log('> mock', mock);
 
     return {
         /** for common */
@@ -102,6 +103,10 @@ module.exports = (env = {}, argv) => {
              * 例如编译后首页是home.html，设置了publicPath: '/test/'，那么现在访问就是http://localhost:9001/test/home.html
              */
             // publicPath: '/test/',
+            /** 配置代理 */
+            proxy: {
+                '/api/': 'http://localhost:3000',
+            },
         },
     };
 };

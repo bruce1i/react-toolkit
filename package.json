@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "mock": "run-p -l mock-server start-mock",
     "start": "webpack-dev-server --env.devMode --env.constEnv=dev",
+    "start-mock": "npm run start -- --mock",
     "review": "npm run prebuild && webpack --env.devMode --env.constEnv=dev",
     "build-dev": "npm run prebuild && cross-env NODE_ENV=production webpack --env.constEnv=dev --progress",
     "build-test": "npm run prebuild && cross-env NODE_ENV=production webpack --env.constEnv=test --progress",
@@ -17,7 +19,7 @@
     "clean": "rimraf ./dist",
     "prebuild": "npm run clean && npm run eslint-q",
     "serve": "serve dist -s",
-    "mock": "node ./mock/server.js"
+    "mock-server": "node ./mock/server.js"
   },
   "repository": {
     "type": "git",
@@ -75,6 +77,7 @@
     "less": "^3.10.3",
     "less-loader": "^5.0.0",
     "mini-css-extract-plugin": "^0.9.0",
+    "npm-run-all": "^4.1.5",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "postcss-loader": "^3.0.0",
     "rimraf": "^3.0.0",
