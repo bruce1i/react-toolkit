@@ -74,3 +74,4 @@
 - npm install @testing-library/jest-dom --save-dev //【辅助包，已安装】扩展jest的matcher，更方便的操作dom
 #### Mock相关
 - npm install json-server --save-dev // Get a full fake REST API
+- npm install nodemon --save-dev // 用来配置mock文件有修改，自动重启服务
