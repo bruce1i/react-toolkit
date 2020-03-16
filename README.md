@@ -27,6 +27,7 @@
 - npm install @hot-loader/react-dom // 支持hooks热加载
 #### 推荐库
 - npm install antd
+- npm install axios // Promise based HTTP client for the browser and node.js
 - npm install classnames // 有条件地连接样式名称
 - npm install core-js regenerator-runtime // 浏览器垫片（需在babel配置文件中配置使用方式）; IE需要regenerator-runtime运行时
 - npm install lodash-es // 推荐从lodash过渡到lodash-es；lodash-es的优势：更小的体积，无需配置，按需打包
