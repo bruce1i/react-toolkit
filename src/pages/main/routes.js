@@ -11,6 +11,7 @@ import MultiBlock from '@/pages/main/pages/multi-block';
 import I18n from '@/pages/main/pages/i18n';
 import ForTest from '@/pages/main/pages/for-test';
 import HotLoader from '@/pages/main/pages/hot-loader';
+import MockData from '@/pages/main/pages/mock-data';
 
 const routes = [
     {
@@ -59,6 +60,11 @@ const routes = [
                 name: '热加载',
                 path: '/demo/hot-loader',
                 component: HotLoader,
+            },
+            {
+                name: 'Mock数据',
+                path: '/demo/mock',
+                component: MockData,
             },
             {
                 path: '/demo/no-name',

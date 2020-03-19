@@ -27,6 +27,7 @@ module.exports = {
         'max-len': ['error', { code: 130 }],
         // warn
         'react/jsx-filename-extension': ['warn', { extensions: ['.js', '.jsx'] }],
+        'react-hooks/exhaustive-deps': 'warn', // error对于目前太严格了，还原默认值
         // off
         'import/no-unresolved': ['off'], // 关闭原因：无法正确解析webpack别名
         'import/no-extraneous-dependencies': ['off'], // 关闭原因：Mac上eslint解析别名有BUG
