@@ -6,7 +6,7 @@ const getWebpackOptimization = require('./webpack.optimization');
 const getConstants = require('./webpack.constants');
 
 
-module.exports = (env = {}, argv) => {
+module.exports = (env = {}, argv = {}) => {
     /**
      * 注意，环境变量限制入参只能是对象（足够使用了），不能是字符串和数组。
      * 参考文档：
