@@ -27,8 +27,8 @@ const common = {
 const constants = {
     /**
      * 使用：
-     * - dev, test, prod是指需要在哪个配置环境下注入常量，通过env.constEnv设置。例：webpack --env.constEnv=test
-     * - 你可以添加更多的配置环境，也可以自己取名，而不用dev、test和prod，只要env.constEnv的值跟你起的名字对上就行。
+     * - dev, test, prod是指需要在哪个配置环境下注入常量，通过env.defConst设置。例：webpack --env.defConst=test
+     * - 你可以添加更多的配置环境，也可以自己取名，而不用dev、test和prod，只要env.defConst的值跟你起的名字对上就行。
      */
     dev: {
         // WC_DEMO3_URL: '"http://www.dev.com"',
@@ -44,4 +44,4 @@ const constants = {
     },
 };
 
-module.exports = ({ constEnv }) => ({ ...common, ...(constants[constEnv] || {}) });
+module.exports = ({ defConst }) => ({ ...common, ...(constants[defConst] || {}) });

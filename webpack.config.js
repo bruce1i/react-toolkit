@@ -5,22 +5,23 @@ const getWebpackPlugins = require('./webpack.plugins');
 const getWebpackOptimization = require('./webpack.optimization');
 const getConstants = require('./webpack.constants');
 
-
-module.exports = (env = {}, argv = {}) => {
+/**
+ * 配置类型文档：
+ * https://webpack.js.org/configuration/configuration-types/
+ */
+module.exports = (env = {}) => {
+    console.log('> env', env);
     /**
      * 注意，环境变量限制入参只能是对象（足够使用了），不能是字符串和数组。
      * 参考文档：
      * https://webpack.js.org/guides/environment-variables/
      * https://webpack.js.org/api/cli/#environment-options
      */
-    const { devMode } = env;
-    const { mock } = argv;
+    const { devMode, mockServer } = env;
     const { module } = getWebpackModule(env);
     const { plugins } = getWebpackPlugins(env);
     const { optimization } = getWebpackOptimization(env);
     const { WC_MOCK_SERVER, WC_API_SERVER } = getConstants(env);
-    console.log('> env', env);
-    console.log('> mock', mock);
 
     return {
         /** for common */
@@ -110,7 +111,7 @@ module.exports = (env = {}, argv = {}) => {
              * mock服务器和api服务器的地址在webpack.constants.js中管理。
              */
             proxy: {
-                '/api/': mock ? WC_MOCK_SERVER : WC_API_SERVER,
+                '/api/': mockServer ? WC_MOCK_SERVER : WC_API_SERVER,
             },
         },
     };
