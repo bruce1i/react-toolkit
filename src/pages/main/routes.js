@@ -12,6 +12,7 @@ import I18n from '@/pages/main/pages/i18n';
 import ForTest from '@/pages/main/pages/for-test';
 import HotLoader from '@/pages/main/pages/hot-loader';
 import MockData from '@/pages/main/pages/mock-data';
+import MyPageState from '@/pages/main/pages/page-state';
 
 const routes = [
     {
@@ -65,6 +66,11 @@ const routes = [
                 name: 'Mock数据',
                 path: '/demo/mock',
                 component: MockData,
+            },
+            {
+                name: 'Page State',
+                path: '/demo/page-state',
+                component: MyPageState,
             },
             {
                 path: '/demo/no-name',
